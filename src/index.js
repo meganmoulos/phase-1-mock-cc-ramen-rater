@@ -21,6 +21,7 @@ function getAllRamen(url) {
     return fetch(url)
     .then(res => res.json())
     .then(data => {
+        // Advanced Deliverable - Render the first ramen on page load
         renderARamen(data[0])
         renderTopMenu(data) 
     })
@@ -64,10 +65,19 @@ function getFormInfo(e){
     renderMenuItem(newRamen)
 }
 
+// Advanced Deliverable - delete button
+// Problem - it deletes all of the info, even if you switch ramens
+
+const deleteBtn = document.createElement('button')
+deleteBtn.textContent = "DELETE"
+form.appendChild(deleteBtn)
+deleteBtn.addEventListener('click', deleteRamen)
+
+function deleteRamen() {
+    // Problem
+    ramenDetails.remove()
+}
+
 // Call Functions
 getAllRamen(url)
 
-
-// Update the rating and comment for a ramen by submitting a form. Changes should
-// be reflected on the frontend. No need to persist. You can add this HTML to the
-// index.html file to create the edit form:
