@@ -48,15 +48,26 @@ function renderARamen(item){
 
 function getFormInfo(e){
     e.preventDefault()
-    console.log(e.target)
     let name = e.target['new-name'].value
     let restaurant = e.target['new-restaurant'].value
     let image = e.target['new-image'].value
     let rating = e.target['new-rating'].value
     let comment = e.target['new-comment'].value
-    renderMenuItem(e)
+
+    let newRamen = {
+        name: `${name}`,
+        restaurant: `${restaurant}`,
+        image: `${image}`,
+        rating: `${rating}`,
+        comment: `${comment}`
+    }
+    renderMenuItem(newRamen)
 }
 
 // Call Functions
 getAllRamen(url)
 
+
+// Update the rating and comment for a ramen by submitting a form. Changes should
+// be reflected on the frontend. No need to persist. You can add this HTML to the
+// index.html file to create the edit form:
