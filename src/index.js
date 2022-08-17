@@ -52,15 +52,11 @@ function getFormInfo(e){
     let name = e.target['new-name'].value
     let restaurant = e.target['new-restaurant'].value
     let image = e.target['new-image'].value
-    // let rating = e.target
-    let comment = e.target.['new-comment'].value
+    let rating = e.target['new-rating'].value
+    let comment = e.target['new-comment'].value
+    renderMenuItem(e)
 }
 
 // Call Functions
 getAllRamen(url)
 
-
-// Create a new ramen after submitting the new-ramen form. The new ramen should
-// be added to the#ramen-menu div. The new ramen does not need to persist; in
-// other words, if you refresh the page, it's okay that the new ramen is no
-// longer on the page.
