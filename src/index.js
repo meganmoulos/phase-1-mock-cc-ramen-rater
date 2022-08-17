@@ -5,6 +5,9 @@ const url = 'http://localhost:3000/ramens'
 
 // DOM selectors
 const ramenMenu = document.querySelector('#ramen-menu')
+const ramenDetails = document.querySelector('#ramen-detail')
+const ramenDetailImage = document.querySelector('.detail-image')
+const ramenName = document.querySelector('.name')
 
 // Event Listeners
 
@@ -12,18 +15,24 @@ const ramenMenu = document.querySelector('#ramen-menu')
 function getAllRamen(url) {
     return fetch(url)
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+        renderTopMenu(data)
+    })
 }
 
 // Render Functions
+function renderMenuItem(item){
+    const ramenMenuImage = document.createElement('img')
+    ramenMenuImage.src = item.image 
+    ramenMenu.appendChild(ramenMenuImage)
+}
 
+function renderTopMenu(data){
+    data.forEach(data => renderMenuItem(data))
+}
 
 getAllRamen(url)
 
-// See all ramen images in the div with the id of ramen-menu. When the page
-// loads, request the data from the server to get all the ramen objects. Then,
-// display the image for each of the ramen using an img tag inside the
-// #ramen-menu div.
 
 // Click on an image from the #ramen-menu div and see all the info about that
 // ramen displayed inside the #ramen-detail div and where it says
